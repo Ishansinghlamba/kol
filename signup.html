@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      background-image: url(https://i.gadgets360cdn.com/large/Netflix_logo_1603804325704.jpg?downsize=950:*&output-quality=80);
+      background: cover;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 7%;
+    }
+    input {
+      display: block;
+      width: 30%;
+      height: 20px;
+      margin: 15px;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid black;
+      background: transparent;
+      color: white;
+    }
+    button {
+      padding: 10px 40px;
+      background: transparent;
+      color: white;
+      outline: thin 1px gray;
+      cursor: pointer;
+      margin-top: 5%;
+    }
+    button:hover {
+      color: red;
+      transition: 2s;
+    }
+    ::placeholder {
+      color: white;
+      font-size: 20px;
+    }
+    header {
+      width: 100%;
+      height: 70px;
+      background: transparent;
+    }
+    li {
+      color: whitesmoke;
+      text-decoration-line: none;
+      margin-right: 10%;
+      padding-top: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      cursor: pointer;
+      font-weight: lighter;
+    }
+    ul {
+      display: flex;
+      justify-content: flex-end;
+    }
+    li:hover {
+      color: yellow;
+      transition: 3s;
+    }
+  </style>
+  <body>
+    <header>
+      <ul>
+        <li>Home</li>
+        <li>Login</li>
+        <li>Sign Up</li>
+      </ul>
+    </header>
+    <form>
+      <h1>Sign Up</h1>
+      <input placeholder="NAME" type="text" id="a" />
+      <input placeholder="CONTACT" type="text" id="b" />
+      <input placeholder="EMAIL" type="email" id="c" />
+      <input placeholder="PASSWORD " type="password" id="d" />
+      <button onclick="store()">SIGN UP</button>
+    </form>
+  </body>
+</html>
+<script>
+  function store() {
+    var form = document.querySelector("form");
+    var name = form.a.value;
+    var contact = form.b.value;
+    var email = form.c.value;
+    var password = form.d.value;
+
+    let sign = {
+      name,
+      contact,
+      email,
+      password,
+    };
+    let arr;
+    arr = localStorage.getItem("kola");
+
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(localStorage.getItem("kola"));
+    }
+    arr.push(sign);
+    localStorage.setItem("kola", JSON.stringify(arr));
+  }
+</script>
